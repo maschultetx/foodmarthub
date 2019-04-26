@@ -10,4 +10,5 @@ datagroup: foodmarthub_default_datagroup {
 
 persist_with: foodmarthub_default_datagroup
 
+# used to drive roadrace
 explore: rrmetrics {}
