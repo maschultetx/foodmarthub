@@ -16,9 +16,10 @@ view: loadmetrics {
     drill_fields: []
   }
 
-  measure: total_loaded {
+  measure: total_loaded_millions
+  {
     type: sum
-    sql: ${rowsloaded} ;;
+    sql: ${rowsloaded}/1000/1000   ;;
 
   }
 
