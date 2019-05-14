@@ -11,6 +11,11 @@ view: loadmetrics {
     sql: ${TABLE}.rowsloaded ;;
   }
 
+  dimension: label {
+    type: string
+    sql: ${TABLE}.label ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
