@@ -21,6 +21,11 @@ view: querymetrics {
     sql: ${TABLE}.queryloopuser ;;
   }
 
+  dimension: label {
+    type: string
+    sql: ${TABLE}.label ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
