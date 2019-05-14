@@ -11,6 +11,11 @@ view: rrstatus {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: label {
+    type: string
+    sql: ${TABLE}.label ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
