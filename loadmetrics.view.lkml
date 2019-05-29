@@ -21,19 +21,21 @@ view: loadmetrics {
     drill_fields: []
   }
 
-  measure: total_loaded_millions
+  measure: rows_loaded_millions
   {
     type: sum
     sql: ${rowsloaded}/1000/1000   ;;
 
   }
 
-  measure: progress {type: number sql: 1.0*(${total_loaded_millions});;
-    html: <div style="float: left
+  measure: rows_in_millions {type: number sql: 1.0*(${rows_loaded_millions});;
+  #  html: <div style="float: left
+   html: <div style="left
           ; width:{{ value | times:100}}%
           ; background-color: rgba(0,180,0,{{ value | times:100 }})
           ; text-align:left
-          ; color: #FFFFFF
+          #; color: #FFFFFF
+          ; color: #000000
           ; border-radius: 5px"> <p style="margin-bottom: 0; margin-left: 4px;">{{ value | times:100 }}%</p>
           </div>
           <div style="float: left

@@ -34,33 +34,60 @@ view: querymetrics {
   measure: avg_execution_time {
     type: average
     value_format:"#.0;"
-    sql: ${executiontimeseconds} ;;
+    #sql: 60 / ${executiontimeseconds} ;;
+    # reversing the gage
+    sql:  ${executiontimeseconds} ;;
 
+
+    # note this produces a negative guage - where less is better
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chds=1,125&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
-    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,4&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,04&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chd=t:{{ value }}&chl={{ rendered_value }}">;;
 
   }
 
-  measure: avg_execution_time_small {
-    # this guage has a smaller range.
-    type: average
+  measure: gas_guage_colorful {
+    type: number
     value_format:"#.0;"
-    sql: ${executiontimeseconds} ;;
+    #sql: 60 / ${executiontimeseconds} ;;
+    # reversing the gage
+    sql: case ${avg_execution_time} when 0 then 0 else 60/ ${avg_execution_time} end ;;
 
+
+    # note this produces a negative guage - where less is better
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chds=1,125&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
-    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&&chds=0,10&chxr=0,10,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,4&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,04&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&&chd=t:{{ value }}&chl={{ rendered_value }}">;;
 
   }
 
-  measure: number_of_queries {
+  measure: gas_guage_grey {
+    type: number
+    value_format:"#.0;"
+    #sql: 60 / ${executiontimeseconds} ;;
+    # reversing the gage
+    sql: case ${avg_execution_time} when 0 then 0 else 60/ ${avg_execution_time} end ;;
+
+
+    # note this produces a negative guage - where less is better
+    #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chds=1,125&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,4&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
+    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,04&chxr=0,50,2&chxl=0:|slow|fast&chco=696969,808080,A9A9A9,C0C0C0,D3D3D3,DCDCDC&chf=bg,s,FFFFFF00&&chd=t:{{ value }}&chl={{ rendered_value }}">;;
+
+  }
+
+
+
+  measure: total_queries_served {
     type: sum
     sql: ${dummy_count} ;;
 
   }
 
-  measure: progress {type: number sql: 1.0*(${number_of_queries});;
+  measure: number_queries_served {type: number sql: 1.0*(${total_queries_served});;
     html: <div style="float: left
           ; width:{{ value | times:100}}%
           ; background-color: rgba(0,180,0,{{ value | times:100 }})
