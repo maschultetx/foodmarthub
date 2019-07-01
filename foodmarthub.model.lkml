@@ -18,3 +18,5 @@ explore: rrinfo {}
 explore: querymetrics {}
 
 explore: loadmetrics {}
+
+explore: total_fact_count {}
