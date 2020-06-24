@@ -43,7 +43,7 @@ view: querymetrics {
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chds=1,125&chma=10,0,0,0&chxt=y&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
     #html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,4&chxr=0,50,2&chxl=0:|fast|slow&chco=00FF00,FFFF00,FF8040,FF0000&chf=bg,s,FFFFFF00&chl={{ rendered_value }}&chd=t:{{ value }}">;;
-    html:   <img src="https://chart.googleapis.com/chart?chs=200x125&cht=gom&chma=10,0,0,0&chxt=y&chds=0,10&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chd=t:{{ value }}&chl={{ rendered_value }}">;;
+    html:   <img src="https://chart.googleapis.com/chart?chs=300x250&cht=gom&chma=10,0,0,0&chxt=y&chds=0,10&chxr=0,50,2&chxl=0:|slow|fast&chco=FF0000,FF8040,FFFF00,00FF00&chf=bg,s,FFFFFF00&chd=t:{{ value }}&chl={{ rendered_value }}">;;
 
   }
 
